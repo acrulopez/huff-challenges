@@ -1,0 +1,38 @@
+// Gas cost: 26
+#define macro MAIN() = takes(0) returns (0) {
+    0x04                    // [0x04]
+    calldataload            // [input]
+    0x01 and                // [1 if input is odd else 0]
+    iszero                  // [1 if input is even else 0]
+
+    // Store result in memory
+    returndatasize          // [0x00, 1 if input is odd else 0]
+    mstore                  // []
+
+    // Return result     
+    calldatasize            // [size]
+    returndatasize          // [offset, size]
+    return
+}
+
+// Gas cost: 27
+// #define macro MAIN() = takes(0) returns (0) {
+//     // Get input
+//     0x04                    // [0x04]
+//     calldataload            // [input]
+
+//     // Shift bits to get the rightmost, which determines if the number is even or odd
+//     0xff                    // [255, input]
+//     shl                     // [2^256 if input is odd, else 0]
+//     iszero                  // [0 if input is odd, else 1: result]
+
+
+//    // Store the blocknumber in memory
+//    returndatasize           // [offset, result]
+//    mstore                   // []
+
+//    // Return the blocknumber
+//    msize                    // [size]
+//    returndatasize           // [offset, size]
+//    return
+// }
