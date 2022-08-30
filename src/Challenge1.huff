@@ -1,0 +1,11 @@
+#define macro MAIN() = takes(0) returns (0) {
+   // Store the blocknumber in memory
+   number                  // [block_number]
+   returndatasize           // [offset, block_number]
+   mstore                  // []
+
+   // Return the blocknumber
+   msize                    // [size]
+   returndatasize           // [offset, size]
+   return
+}
