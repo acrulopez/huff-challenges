@@ -10,7 +10,7 @@
     mstore                  // []
 
     // Return result     
-    calldatasize            // [size]
+    calldatasize            // [size] 
     returndatasize          // [offset, size]
     return
 }
